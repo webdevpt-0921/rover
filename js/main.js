@@ -1,18 +1,19 @@
-function generateGame() {
-  let canvas = game.querySelector("#snake");
-  const ctx = canvas.getContext("2d");
+window.addEventListener("load", function () {
+  console.log("loaded");
+  function generateGame() {
+    let canvas = document.querySelector("#snake-canvas");
+    const ctx = canvas.getContext("2d");
 
-  const snakeGame = new Game({
-    ctx: ctx,
-    // rows: canvas.width / 10,
-    // columns: canvas.height / 10,
-    // maxCells: 10,
-    // snake: new Snake(canvas.width / 10, canvas.height / 10),
-  });
+    const roverGame = new Game({
+      ctx: ctx,
+      rover: new Rover(10, 10, "N"),
+    });
 
-  snakeGame.start();
-}
+    // snakeGame.start();
+    roverGame.start();
+  }
 
-const startButton = document.querySelector("#start-canvas");
+  const startButton = document.querySelector("#start");
 
-startButton.addEventListener("click");
+  startButton.addEventListener("click", generateGame);
+});
